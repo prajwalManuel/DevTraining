@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>Import Need IT</name>
+        <order>100</order>
+        <run_business_rules>false</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
+
+	// Add your code here
+     gs.info("This is a debug message"+("u_requested_for_email" in source));
+	if(!("u_requested_for_email" in source)){
+		gs.info("Inside SeT EMAiL");
+		gs.info("Requseted for "+source.u_requested_for.toString().toLowerCase());
+		var name = source.u_requested_for.toString().toLowerCase();
+		target.u_requested_for_email = name.replace(" ", ".") + "@example.com";
+	}
+})(source, target, map, log, action==="update");]]></script>
+        <source_table>x_58872_needit_histo</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-19 07:28:03</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>5bf75c440fa732001a3a4e9ce1050e51</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Import Need IT</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_transform_map_5bf75c440fa732001a3a4e9ce1050e51</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-19 09:19:51</sys_updated_on>
+        <target_table>x_58872_needit_needit</target_table>
+    </sys_transform_map>
+</record_update>
